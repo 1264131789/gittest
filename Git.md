@@ -30,9 +30,19 @@
 
 6. git commit：提交暂存区到本地仓库
 
-   
+7. git commit -m [message]：提交暂存区到仓库
 
-7. 
+   git commit [file1] [file2]... -m [messsage]：提交指定文件或目录到本地仓库
+
+   git commit -a：-a参数修改后的文件不需要执行git add命令，直接提交
+
+8. 设置提交时的用户信息
+
+   git config --gloab user.name ‘shbj’
+
+   git config --gloab user.email ‘test@qq.com’
+
+9. 
 
    
 

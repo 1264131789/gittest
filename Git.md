@@ -1,52 +1,57 @@
-##### 1、Git工作区、暂存区和版本库（本地仓库）、远程仓库
+#### Git笔记
 
-##### 2.Git基本命令
+#### 1.Git简介
 
-1. git init： 创建仓库
+##### 1、三种状态
 
-2. git clone [url] :拷贝一个git远程仓库到本地
+已修改，表示修改了文件，但还没保存到数据库中。
 
-   git clone https://github.com/1264131789/CustomView.git
+已暂存，表示对已修改文件的当前版本做了标记，使之包含在了下次提交的快照中。
 
-   git clone https://github.com/1264131789/CustomView.git MyCustomView，重命名项目名
+已提交，表示数据已经安全的保存在了本地数据库中。
 
-3. git add [dir] [file2] ...：添加一个或多个文件（目录）到暂存区
+##### 2.Git项目的三个阶段
 
-   git add git.md
+工作区，暂存区以及Git目录（本地仓库）。
 
-4. git status：查看当前仓库的状态，显示有变更的文件
+<img src="C:\Users\shbj\Desktop\笔记\git\areas.png" style="zoom: 80%;" />
 
-   git status -s ：获取简短的输出结果
+工作区，是对项目某个版本独立提取出来的内容。
 
-5. git diff：比较文件的不同，即工作区和暂存区的差异
+暂存区，是一个文件，保存了下次将要提交的文件列表信息，一般在Git目录仓库中。
 
-   git diff [file]：显示暂存区与工作区的差别
+Git仓库目录，是Git用来保存项目的元数据和对象数据库的地方。这是Git最重要的部分，从其他计算机克隆仓库时复制的就是这里的数据。
 
-   git diff -cached [file] 或git -diff -staged [file]：显示暂存区与上一次提交（commit）的差异
+##### 3、基本的Git工作流程
 
-   git diff [first-branch]...[second-branch]：显示两次提交间的差异
+1.在工作区中修改文件
 
-   git status显示的是改动了那些文件，而git diff是详细显示出来改动的内容
+2.将你想要下次提交的更改选择性地暂存，这样只会将更改的部分添加到暂存区。
 
-6. git commit：提交暂存区到本地仓库
+3.提交更新，找到暂存区的文件，将快照永久性的存储到Git目录。
 
-7. git commit -m [message]：提交暂存区到仓库
+如果自上次检出后，做了修改但还没有放到暂存区，就是**已修改**状态；如果文件已修改并放入暂存区，就属于**已暂存**状态；如果Git目录中保存着特定版本的文件，就属于**已提交**状态
 
-   git commit [file1] [file2]... -m [messsage]：提交指定文件或目录到本地仓库
+#### 2.Git配置
 
-   git commit -a：-a参数修改后的文件不需要执行git add命令，直接提交
+1、查看所有配置以及他们所在的位置
 
-8. 设置提交时的用户信息
+git config --list --show-origin
 
-   git config --gloab user.name ‘shbj’
+2、用户信息
 
-   git config --gloab user.email ‘test@qq.com’
+git config --global user.name  “John Doe”
 
-9. 
+git config --global user.email “Johndoe@example.com”
 
-   
+3、检查配置信息
 
+git config --list
 
+git config user.name
 
+4、查看那个配置文件最后设置了配置信息
 
+git confit --show-origin user.name
 
+=> file:C:/Users/shbj/.gitconfig   shbj

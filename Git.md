@@ -55,3 +55,70 @@ git config user.name
 git confit --show-origin user.name
 
 => file:C:/Users/shbj/.gitconfig   shbj
+
+#### 3.获取帮助
+
+1、git help \<verb>
+
+git help config
+
+2、git \<verb> -h ，用-h获得更简明的help输出。
+
+git add -h
+
+#### 4.Git基础
+
+##### 1、获取Git仓库
+
+1.将尚未进行版本控制的本地目录转换为Git仓库
+
+git init
+
+2.从其他服务器克隆一个已存在的Git仓库
+
+git clone https://github.com/libgit2/libgit2
+
+git clone https://github.com/libgit2/libgit2 mylibgit
+
+##### 2、记录每次更新到仓库
+
+工作目录下的每一个文件都不外乎两种状态：已跟踪或未跟踪。已跟踪的文件是指那些被纳入版本控制的文件。
+
+编辑过某些文件之后，由于自从上次提交后对他们进行了修改，Git将他们标记为已修改文件。在工作时可以有选择性地将这些已修改过的文件放入暂存区，然后提交所有以暂存的修改，如此反复。
+
+<img src="C:\Users\shbj\Desktop\笔记\git\fileStatus.png" style="zoom:80%;" />
+
+1、检查当前文件状态
+
+git status
+
+2、跟踪新文件
+
+git add
+
+```
+git add README
+```
+
+##### 3、暂存已修改的文件
+
+git add 
+
+这是个多功能命令：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等。 将这个命令理解为“精确地将内容添加到下一次提交中”而不是“将一个文件添加到项目中”要更加合适。
+
+##### 4、状态简览
+
+git status -s
+
+##### 5、查看已暂存与未暂存的修改
+
+git diff ：比对的是工作目录中当前文件和暂存区快照之间的差异。
+
+git diff --staged（--cached） ：比对已暂存文件与最后一次提交的文件的差异。
+
+##### 6、提交更新
+
+git commit
+
+
+

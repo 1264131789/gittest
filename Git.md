@@ -372,5 +372,10 @@ git checkout 命令
 
 ```
 git checkout testing
+修改文件内容，提交，再切回master分支
+git checkout master
 ```
 
+一是使 HEAD 指回 master 分支，二是将工作目录恢复成 master 分支所指向的快照内容。 也就是说，你现在做修改的话，项目将始于一个较旧的版本。 本质上来讲，这就是忽略 testing 分支所做的修改，以便于向另一个方向进行开发。
+
+分支切换会改变你工作目录中的文件

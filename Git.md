@@ -342,3 +342,68 @@ git config --global alias.ci commit
 
 当要输入 git commit 时，只需要输入 git ci
 
+#### 3.Git分支
+
+##### 1、分支简介
+
+ 暂存操作会为每一个文件计算校验和（SHA-1 哈希算法），然后会把当前版本的文件快照保存到Git 仓库中 （Git 使用 blob 对象来保存它们），最终将校验和加入到暂存区域等待提交。当使用 git commit 进行提交操作时，Git 会先计算每一个子目录（本例中只有项目根目录）的校验和， 然后在 Git 仓库中这些校验和保存为树对象。随后，Git 便会创建一个提交对象， 它除了包含上面提到的那些信息外，还包含指向这个树对象（项目根目录）的指针。 如此一来，Git 就可以在需要的时候重现此次保存的快照。
+
+<img src="C:\Users\shbj\Desktop\笔记\git\git提交对象.png" alt="image-20210517183003976" style="zoom: 50%;" />
+
+##### 2、分支创建
+
+```
+git branch testing
+```
+
+HEAD指针，指向当前所在的本地分支（译注：将 HEAD 想象为当前分支的别名）
+
+git log 命令查看各个分支当前所指的对象。 提供这一功能的参数是 --decorate
+
+```
+$ git log --oneline --decorate
+bc9ab1f (HEAD -> master, testing) git 基础
+d47ccf5 Git别名
+```
+
+##### 3、分支切换
+
+git checkout 命令
+
+```
+git checkout testing
+修改文件内容，提交，再切回master分支
+git checkout master
+```
+
+一是使 HEAD 指回 master 分支，二是将工作目录恢复成 master 分支所指向的快照内容。 也就是说，你现在做修改的话，项目将始于一个较旧的版本。 本质上来讲，这就是忽略 testing 分支所做的修改，以便于向另一个方向进行开发。
+
+分支切换会改变你工作目录中的文件
+
+git log --oneline --decorate --graph --all ，它会输出你的提交历史、各个分支的指向以及项目的分支分叉情况
+
+创建新分支的同时切换过去
+
+通常我们会在创建一个新分支后立即切换过去，这可以用 git checkout -b \<newbranchname> 一条命令搞定。
+
+##### 4、分支的新建与合并
+
+只有提交后，切换分支，工作目录才会切换回来。
+
+```
+git checkout -b hotfix
+git checkout master
+git merge iss53
+git branch -d hotfix
+git add *
+git commit -m "add test2.txt"//提交后，当再切回iss53分支，工作目录才会还原
+git checkout iss53
+```
+
+##### 5、分支的合并
+
+```
+git checkout master
+git merge iss53
+```
+

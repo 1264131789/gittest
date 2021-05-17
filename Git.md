@@ -342,3 +342,35 @@ git config --global alias.ci commit
 
 当要输入 git commit 时，只需要输入 git ci
 
+#### 3.Git分支
+
+##### 1、分支简介
+
+ 暂存操作会为每一个文件计算校验和（SHA-1 哈希算法），然后会把当前版本的文件快照保存到Git 仓库中 （Git 使用 blob 对象来保存它们），最终将校验和加入到暂存区域等待提交。当使用 git commit 进行提交操作时，Git 会先计算每一个子目录（本例中只有项目根目录）的校验和， 然后在 Git 仓库中这些校验和保存为树对象。随后，Git 便会创建一个提交对象， 它除了包含上面提到的那些信息外，还包含指向这个树对象（项目根目录）的指针。 如此一来，Git 就可以在需要的时候重现此次保存的快照。
+
+<img src="C:\Users\shbj\Desktop\笔记\git\git提交对象.png" alt="image-20210517183003976" style="zoom: 50%;" />
+
+##### 2、分支创建
+
+```
+git branch testing
+```
+
+HEAD指针，指向当前所在的本地分支（译注：将 HEAD 想象为当前分支的别名）
+
+git log 命令查看各个分支当前所指的对象。 提供这一功能的参数是 --decorate
+
+```
+$ git log --oneline --decorate
+bc9ab1f (HEAD -> master, testing) git 基础
+d47ccf5 Git别名
+```
+
+##### 3、分支切换
+
+git checkout 命令
+
+```
+git checkout testing
+```
+

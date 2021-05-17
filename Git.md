@@ -379,3 +379,31 @@ git checkout master
 一是使 HEAD 指回 master 分支，二是将工作目录恢复成 master 分支所指向的快照内容。 也就是说，你现在做修改的话，项目将始于一个较旧的版本。 本质上来讲，这就是忽略 testing 分支所做的修改，以便于向另一个方向进行开发。
 
 分支切换会改变你工作目录中的文件
+
+git log --oneline --decorate --graph --all ，它会输出你的提交历史、各个分支的指向以及项目的分支分叉情况
+
+创建新分支的同时切换过去
+
+通常我们会在创建一个新分支后立即切换过去，这可以用 git checkout -b \<newbranchname> 一条命令搞定。
+
+##### 4、分支的新建与合并
+
+只有提交后，切换分支，工作目录才会切换回来。
+
+```
+git checkout -b hotfix
+git checkout master
+git merge iss53
+git branch -d hotfix
+git add *
+git commit -m "add test2.txt"//提交后，当再切回iss53分支，工作目录才会还原
+git checkout iss53
+```
+
+##### 5、分支的合并
+
+```
+git checkout master
+git merge iss53
+```
+

@@ -463,3 +463,48 @@ git branch --no-merged master
 git push origin serverfix
 ```
 
+下一次其他协作者从服务器上抓取数据时，他们会在本地生成一个远程分支 origin/serverfix，指向服务器的 serverfix 分支的引用：
+
+```
+$ git fetch origin
+```
+
+要特别注意的一点是当抓取到新的远程跟踪分支时，本地不会自动生成一份可编辑的副本（拷贝）。 换一句话
+说，这种情况下，不会有一个新的 serverfix 分支——只有一个不可以修改的 origin/serverfix 指针。可以运行 git merge origin/serverfix 将这些工作合并到当前所在的分支。 如果想要在自己的serverfix 分支上工作，可以将其建立在远程跟踪分支之上：
+
+```
+$ git checkout -b serverfix origin/serverfix
+```
+
+这会给你一个用于工作的本地分支，并且起点位于 origin/serverfix。
+
+###### 2、跟踪分支
+
+从一个远程跟踪分支检出一个本地分支会自动创建所谓的“跟踪分支”（它跟踪的分支叫做“上游分支”）。
+
+```
+$ git checkout --track origin/serverfix
+```
+
+如果你尝试检出的分支 (a) 不存在且 (b) 刚好只有一个名字与之匹配的远程分支，那么 Git 就会为你创建一个跟踪分支：
+
+```
+$ git checkout serverfix
+```
+
+如果想要将本地分支与远程分支设置为不同的名字
+
+```
+$ git checkout -b sf origin/serverfix
+```
+
+设置已有的本地分支跟踪一个刚刚拉取下来的远程分支，或者想要修改正在跟踪的上游分支， 你可以在任意时
+间使用 -u 或 --set-upstream-to 选项运行 git branch 来显式地设置。
+
+```
+$ git branch -u origin/serverfix
+```
+
+当设置好跟踪分支后，可以通过简写 @{upstream} 或 @{u} 来引用它的上游分支
+
+想要查看设置的所有跟踪分支，可以使用 git branch 的 -vv 选项。

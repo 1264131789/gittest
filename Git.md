@@ -532,6 +532,8 @@ $ git push origin --delete serverfix
 
 ##### 10、变基
 
+###### 1.变基的基本操作
+
 使用 rebase 命令将提交到某一分支上的所有修改都移至另一分支上
 
 ```
@@ -542,3 +544,6 @@ $ git checkout master
 $ git merge experiment
 ```
 
+###### 2、变基的风险
+
+如果提交存在于你的仓库之外，而别人可能基于这些提交进行开发，那么不要执行变基。

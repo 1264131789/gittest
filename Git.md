@@ -534,3 +534,5 @@ $ git push origin --delete serverfix
 
 使用 rebase 命令将提交到某一分支上的所有修改都移至另一分支上
 
+$ git checkout experiment
+$ git rebase master

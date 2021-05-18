@@ -6,12 +6,9 @@ bianji
 experiment
 
 client
-<<<<<<< HEAD
-client2
-=======
 client2
 
 变基的风险
 变基的风险1
 变基的风险2
->>>>>>> 变基的风险2
+变基的风险3

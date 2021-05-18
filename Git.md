@@ -455,3 +455,11 @@ git branch --no-merged master
 
 假设你的网络里有一个在 git.ourcompany.com 的 Git 服务器。 如果你从这里克隆，Git 的 clone 命令会为你自动将其命名为 origin，拉取它的所有数据， 创建一个指向它的 master 分支的指针，并且在本地将其命名为 origin/master。 Git 也会给你一个与 origin 的master 分支在指向同一个地方的本地 master 分支，这样你就有工作的基础。只要你保持不与origin 服务器连接（并拉取数据），你的 origin/master 指针就不会移动。
 
+###### 1、推送
+
+当你想要公开分享一个分支时，需要将其推送到有写入权限的远程仓库上。
+
+```
+git push origin serverfix
+```
+

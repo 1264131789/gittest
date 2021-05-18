@@ -530,3 +530,7 @@ git fetch
 $ git push origin --delete serverfix
 ```
 
+##### 10、变基
+
+使用 rebase 命令将提交到某一分支上的所有修改都移至另一分支上
+

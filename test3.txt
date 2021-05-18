@@ -7,6 +7,3 @@ experiment
 
 client
 client2
-
-变基的风险
-变基的风险1
